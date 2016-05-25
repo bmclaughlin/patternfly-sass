@@ -1052,7 +1052,7 @@
 
       forceResize = function () {
         setTimeout(function () {
-          if (window.dispatchEvent) {
+          if (window.dispatchEvent !== undefined) {
             window.dispatchEvent(new Event('resize'));
           }
           // Special case for IE
