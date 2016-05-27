@@ -21,14 +21,10 @@
       },
 
       forceResize = function (delay) {
+        var evt = document.createEvent('UIEvents');
+        evt.initUIEvent('resize', true, false, window, 0);
         setTimeout(function () {
-          if (window.dispatchEvent !== undefined) {
-            window.dispatchEvent(new Event('resize'));
-          }
-          // Special case for IE
-          if ($(document).fireEvent) {
-            $(document).fireEvent('onresize');
-          }
+          window.dispatchEvent(evt);
         }, delay);
       },
 
